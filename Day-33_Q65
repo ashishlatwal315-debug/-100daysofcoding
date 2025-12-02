@@ -1,0 +1,39 @@
+// Search in a sorted array using binary search
+
+#include <stdio.h>
+
+int main() {
+    int n, search, first, last, middle, i, found = 0;
+
+    printf("Enter number of elements in the sorted array:\n");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d sorted elements:\n", n);
+    for(i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+
+    printf("Enter element to search:\n");
+    scanf("%d", &search);
+
+    first = 0;
+    last = n - 1;
+
+    while(first <= last) {
+        middle = (first + last) / 2;
+        if(arr[middle] == search) {
+            printf("%d found at index %d.\n", search, middle);
+            found = 1;
+            break;
+        }
+        else if(arr[middle] < search)
+            first = middle + 1;
+        else
+            last = middle - 1;
+    }
+
+    if(!found)
+        printf("%d not found in the array.\n", search);
+
+    return 0;
+}

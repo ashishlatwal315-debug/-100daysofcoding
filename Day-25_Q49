@@ -1,0 +1,32 @@
+/*
+ Write a  Program to print the following pattern:
+  5
+  45
+  345
+  2345
+  12345
+
+  For n = 5, each row starts from a decreasing number and prints up to 5.
+*/
+
+#include <stdio.h>
+
+int main() {
+    int i, j, n;
+
+    // Prompt the user for the number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    // Outer loop for rows, starts at n and goes down to 1
+    for (i = n; i >= 1; i--) {
+        // Inner loop prints numbers from current i up to n
+        for (j = i; j <= n; j++) {
+            printf("%d", j);
+        }
+        // Move to the next line after each row
+        printf("\n");
+    }
+
+    return 0;
+}

@@ -1,0 +1,40 @@
+/*
+ Check if the elements on the diagonal of a matrix are distinct.
+*/
+
+#include <stdio.h>
+
+int main() {
+    int n, isDistinct = 1;
+    printf("Enter the order (size) of the square matrix: ");
+    scanf("%d", &n);
+    int mat[20][20], seen[1000], count = 0; // Assume max of 1000 distinct possible values
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    // Check distinctness of main diagonal
+    for (int i = 0; i < n; i++) {
+        int value = mat[i][i];
+        // Check if value is already seen
+        for (int j = 0; j < count; j++) {
+            if (seen[j] == value) {
+                isDistinct = 0; // Not distinct
+                break;
+            }
+        }
+        if (!isDistinct) break;
+        seen[count++] = value;
+    }
+
+    if (isDistinct)
+        printf("All diagonal elements are distinct.\n");
+    else
+        printf("Diagonal elements are not all distinct.\n");
+
+    return 0;
+}

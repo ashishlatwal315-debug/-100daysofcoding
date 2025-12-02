@@ -1,0 +1,69 @@
+Write a program to swap the first and last digit of a number.
+
+
+#include <stdio.h>
+
+int main() {
+    int num, first, last, temp, digits = 0, divisor;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Find last digit
+    last = num % 10;
+
+    // Find number of digits
+    temp = num;
+    while (temp != 0) {
+        temp /= 10;
+        digits++;
+    }
+
+    // Find first digit
+    temp = num;
+    while (temp >= 10) {
+        temp /= 10;
+    }
+    first = temp;
+
+    // Construct new number after swapping
+    divisor = 1;
+    for (int i = 1; i < digits - 1; i++)
+        divisor *= 10;
+
+    // Remove first and last digit
+    int middle = (num % divisor) / 10;
+
+    // Reconstruct number: last digit, middle part, first digit
+    int swapped = last * divisor + middle * 10 + first;
+
+    printf("Number after swapping first and last digit: %d\n", swapped);
+    return 0;
+}
+
+
+Write a program to check if a number is a perfect number.
+
+
+
+#include <stdio.h>
+
+int main() {
+    int num, sum = 0;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Find sum of divisors (excluding the number itself)
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0)
+            sum += i;
+    }
+
+    if (sum == num && num > 0)
+        printf("%d is a PERFECT NUMBER\n", num);
+    else
+        printf("%d is NOT PERFECT NUMBER\n", num);
+
+    return 0;
+}
+
+

@@ -1,0 +1,32 @@
+/*
+ Write a Program to print the following pattern:
+  *****
+  ****
+  ***
+  **
+  *
+
+  For n = 5, each row prints decreasing number of stars.
+*/
+
+#include <stdio.h>
+
+int main() {
+    int i, j, n;
+
+    // Prompt user for number of rows
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    // Outer loop for rows 1 to n
+    for (i = n; i >= 1; i--) {
+        // Inner loop prints stars equal to current row number
+        for (j = 1; j <= i; j++) {
+            printf("*");
+        }
+        // Move to next line after each row
+        printf("\n");
+    }
+
+    return 0;
+}

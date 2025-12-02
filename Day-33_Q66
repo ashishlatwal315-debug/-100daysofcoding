@@ -1,0 +1,43 @@
+// Insert an element in a sorted array at the appropriate position
+
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, num, pos = 0;
+
+    printf("Enter the size of the array:\n");
+    scanf("%d", &n);
+
+    printf("Enter %d sorted elements:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the element to insert:\n");
+    scanf("%d", &num);
+
+    // Find position where the element should be inserted
+    for(i = 0; i < n; i++) {
+        if(arr[i] < num) {
+            pos++;
+        } else {
+            break;
+        }
+    }
+
+    // Move elements right to create space for new element
+    for(i = n - 1; i >= pos; i--) {
+        arr[i + 1] = arr[i];
+    }
+
+    // Insert the new element at the found position
+    arr[pos] = num;
+
+    printf("Array after insertion:\n");
+    for(i = 0; i <= n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
